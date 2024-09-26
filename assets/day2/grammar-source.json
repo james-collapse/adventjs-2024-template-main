@@ -1,0 +1,19 @@
+{
+    "origin": "Dear Santa, this year I have been #qualifier# good. I #niceverb# #nicething# and I never ever #badverb# #nicecollective#. Please can I have #normalthing# and #lessnormalthing#. Love #name#",
+
+    "name": ["Mike", "Rianna", "Dan", "Max", "Mariana", "Berrak", "Holly", "Florence", "Sam", "Chris", "Manesh"],
+
+    "qualifier": ["kinda", "pretty", "very", "amazingly", "quite", "somewhat", "exceptionally"],
+
+    "niceverb": ["looked after", "gave a big hug to", "made dinner for"],
+
+    "nicething": ["a small kitten", "a lost baby", "an old lady"],
+
+    "badverb": ["yelled at", "scared", "stuck my tongue out at"],
+
+    "nicecollective": ["the birds in the park", "my teachers", "my friend's new puppy"],
+
+    "normalthing": ["a new bike", "a train set", "a pet lizard"],
+
+    "lessnormalthing": ["a loud megaphone for scaring #nicecollective#", "fencing lessons and a cool sword", "a catapault"]
+}

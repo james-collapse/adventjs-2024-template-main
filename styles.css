@@ -1,0 +1,116 @@
+@font-face {
+    font-family: "Lora";
+    src: url("./assets/homepage/Lora-VariableFont_wght.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #111;
+}
+
+#p5_loading {
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-family: Lora, serif;
+    color: #C9A156;
+}
+
+#container {
+    width: 100%;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: end;
+}
+
+#canvas-wrapper {
+    float: left;
+    z-index: -1;
+}
+
+#pad {
+    width: calc((100% - 600px - 20px*4)/2);
+    height: 10px;
+    padding: 20px;
+    float: left;
+}
+
+#info {
+    float: left;
+    color: #fff;
+    font-size: 16px;
+    font-family: Lora, serif;
+    z-index: 1;
+}
+
+#credits {
+    color: #aaa;
+    font-style: italic;
+}
+
+#back-button {
+    margin: auto;
+    padding: 0;
+    position: absolute;
+    left: calc(50% - 365px);
+    top: calc(50% - 308px);
+    transform: translate(-100%, -50%);
+    width: 140px;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    font-family: Lora, serif;
+    color: #fff;
+    background-color: #8D8D8D;
+    font-size: 25px;
+    z-index: 1;
+    display: none;
+}
+
+#back-button:hover {
+    background-color: #B7B7B7;
+}
+
+/* info below */
+@media (min-height: 815px) {
+    canvas {
+        margin-bottom: 60px;
+    }
+    #info {
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 280px);
+    }
+}
+
+/* side info */
+@media (max-height: 814px) {
+    #info {
+        width: calc((100% - 600px - 20px*4)/2);
+        padding: 20px;
+    }
+}
+
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
