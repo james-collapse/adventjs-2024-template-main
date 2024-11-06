@@ -13,7 +13,7 @@ class DayX extends Day {
         this.loop = true; // Set to true or false
 
         this.controls =
-            "CLICK to regenerate, C to toggle centre repeat, X to export";
+            "CLICK to regenerate, A to toggle autoplay, C to toggle centre repeat, X to export";
         this.credits = "Made by James Walker";
 
         // Define variables here. Runs once during the sketch holder setup
@@ -27,6 +27,8 @@ class DayX extends Day {
         this.cells = [[]]; // 2D array
         this.borderRemoved = true;
         this.centreRepeatRemoved = false;
+        this.autoplay = false;
+        this.frameInterval; // No. frames between generations
     }
 
     prerun() {
@@ -36,6 +38,9 @@ class DayX extends Day {
         // Set cell width and height
         this.w = 20;
         this.h = 20;
+
+        // Set interval between generations
+        this.frameInterval = 30;
 
         this.reset();
         this.update();
@@ -70,6 +75,10 @@ class DayX extends Day {
         this.renderCells(ry);
 
         pop();
+
+        if (this.autoplay) {
+            this.autorun();
+        }
     }
 
     renderGrid() {
@@ -97,6 +106,13 @@ class DayX extends Day {
                     square(i * this.w, j * this.h, this.w * 0.9);
                 }
             }
+        }
+    }
+
+    // Automatically compute next generation
+    autorun() {
+        if (frameCount % this.frameInterval === 0) {
+            this.next();
         }
     }
 
@@ -223,7 +239,9 @@ class DayX extends Day {
     // Below are optional functions for interactivity
 
     mousePressed() {
-        this.next();
+        if (!this.autoplay) {
+            this.next();
+        }
     }
 
     mouseReleased() {
@@ -237,6 +255,10 @@ class DayX extends Day {
         
         if (key === 'x' || key === 'X') {
             saveCanvas();
+        }
+
+        if (key === 'a' || key === 'A') {
+            this.autoplay = !this.autoplay;
         }
     }
 
