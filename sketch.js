@@ -51,6 +51,7 @@ function setup() {
     if (debugOn) daysToReveal = 3;
 
     homepage = new Homepage();
+    changeDay(0);
 }
 
 function draw() {
