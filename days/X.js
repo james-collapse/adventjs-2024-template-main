@@ -101,12 +101,20 @@ class DayX extends Day {
         push();
         translate(- this.w / 2, - this.h / 2);
         // Render vertical lines
-        for (let i = -0.5; i < 2 * this.columns; i ++) {
+        for (let i = -0.5; i < 2 * this.columns; i++) {
+            push();
             line(i * this.w, -this.h, i * this.w, height + this.h);
+            translate(this.w / 2, 0);
+            line(i * this.w, -this.h, i * this.w, height + this.h);
+            pop();
         }
         // Render horizontal lines
         for (let j = -0.5; j < 2 * this.rows; j++) {
+            push();
             line(-this.w, j * this.h, width + this.w, j * this.h);
+            translate(0, this.h / 2);
+            line(-this.w, j * this.h, width + this.w, j * this.h);
+            pop();
         }
         pop();
     }
