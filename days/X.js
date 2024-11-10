@@ -13,7 +13,7 @@ class DayX extends Day {
         this.loop = true; // Set to true or false
 
         this.controls =
-            "CLICK to regenerate, A to toggle autoplay, C to toggle centre repeat, X to export";
+            "CLICK to regenerate, A to toggle autoplay, C to toggle centre repeat, T to toggle tiling, X to export";
         this.credits = "Made by James Walker";
 
         // Define variables here. Runs once during the sketch holder setup
@@ -29,6 +29,7 @@ class DayX extends Day {
         this.centreRepeatRemoved = false;
         this.autoplay = false;
         this.frameInterval; // No. frames between generations
+        this.tile = false;
     }
 
     prerun() {
@@ -72,7 +73,20 @@ class DayX extends Day {
             translate(this.w / 2, this.h / 2);
         }
         this.renderGrid();
-        this.renderCells(ry);
+
+        if (this.tile) {
+            translate(this.w, height/4);
+            this.renderCells(ry, 0.5);
+
+            if (this.centreRepeatRemoved) {
+                translate(-0.5 * this.w, 0);
+            }
+
+            translate((width/2) - 2 * this.w, 0);
+            this.renderCells(ry, 0.5);
+        } else {
+            this.renderCells(ry, 1);
+        }
 
         pop();
 
@@ -87,7 +101,7 @@ class DayX extends Day {
         push();
         translate(- this.w / 2, - this.h / 2);
         // Render vertical lines
-        for (let i = -0.5; i < 2 * this.columns; i++) {
+        for (let i = -0.5; i < 2 * this.columns; i ++) {
             line(i * this.w, -this.h, i * this.w, height + this.h);
         }
         // Render horizontal lines
@@ -97,16 +111,19 @@ class DayX extends Day {
         pop();
     }
 
-    renderCells(arr) {
+    renderCells(arr, s) {
+        push();
+        scale(s);
         for (let i in arr) {
             for (let j in arr[i]) {
                 let v = arr[i][j];
                 if (v === 1) {
                     fill(this.dark);
-                    square(i * this.w, j * this.h, this.w * 0.9);
+                    square(i * this.w, j * this.h, this.w);
                 }
             }
         }
+        pop();
     }
 
     // Automatically compute next generation
@@ -259,6 +276,10 @@ class DayX extends Day {
 
         if (key === 'a' || key === 'A') {
             this.autoplay = !this.autoplay;
+        }
+
+        if (key === 't' || key === 'T') {
+            this.tile = !this.tile;
         }
     }
 
